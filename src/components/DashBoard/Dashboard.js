@@ -13,16 +13,18 @@ import AddReview from "./AddReview/AddReview";
 import AddServices from "./AddServices/AddServices";
 import ManageOrder from "./ManageOrder/ManageOrder";
 import ManageServices from "./ManageServices/ManageServices";
+import MakeAdmin from "./MakeAdmin/MakeAdmin";
+import AdminRoute from "./MakeAdmin/AdminRoute/AdminRoute";
 
 const Dashboard = () => {
   let { path, url } = useRouteMatch();
-  const { logOut } = useAuth();
+  const { logOut, admin } = useAuth();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   return (
     <>
       <div className="bg-pink-300 h-full">
         <div>
-          {/* Mobile filter dialog */}
+          {/* Mobile */}
           <Transition.Root show={mobileFiltersOpen} as={Fragment}>
             <Dialog
               as="div"
@@ -66,9 +68,8 @@ const Dashboard = () => {
                     </button>
                   </div>
 
-                  {/* Filters */}
                   <form className="mt-4 ">
-                    <h3 className="sr-only">Categories</h3>
+                    {/* mobile */}
                     <ul className="space-y-4  font-medium text-gray-900 px-2 py-3">
                       <li>
                         {" "}
@@ -96,14 +97,16 @@ const Dashboard = () => {
                           Add Review
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          className="text-gray-700 text-base hover:text-gray-900"
-                          to={`${url}/addservices`}
-                        >
-                          Add Services
-                        </Link>
-                      </li>
+                      {
+                        <li>
+                          <Link
+                            className="text-gray-700 text-base hover:text-gray-900"
+                            to={`${url}/addservices`}
+                          >
+                            Add Services
+                          </Link>
+                        </li>
+                      }
                       <li>
                         <Link
                           className="text-gray-700 text-base hover:text-gray-900"
@@ -159,8 +162,8 @@ const Dashboard = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-4  gap-y-10">
                 {/* Filters */}
-                <form className="hidden w-72 h-full lg:block bg-pink-400 pt-6 ">
-                  <h3 className="sr-only">Categories</h3>
+                <form className="hidden w-72 min-h-screen lg:block bg-pink-400 pt-6 ">
+                  {/* large device */}
                   <Link to="/">
                     {" "}
                     <img src={logo} className="w-32 m-6 mt-2 ml-6" alt="" />
@@ -176,47 +179,65 @@ const Dashboard = () => {
                         Dashboard
                       </Link>
                     </li>
+                    {!admin && (
+                      <div className="space-y-4">
+                        <li>
+                          <Link
+                            className="text-gray-100 text-base hover:text-white"
+                            to={`${url}/myorders`}
+                          >
+                            My orders
+                          </Link>
+                        </li>
 
-                    <li>
-                      <Link
-                        className="text-gray-100 text-base hover:text-white"
-                        to={`${url}/myorders`}
-                      >
-                        My orders
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="text-gray-100 text-base hover:text-white"
-                        to={`${url}/addreview`}
-                      >
-                        Add Review
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="text-gray-100 text-base hover:text-white"
-                        to={`${url}/addservices`}
-                      >
-                        Add Services
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="text-gray-100 text-base hover:text-white"
-                        to={`${url}/manageorders`}
-                      >
-                        Manage Orders
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="text-gray-100 text-base hover:text-white"
-                        to={`${url}/manageservices`}
-                      >
-                        Manage Services
-                      </Link>
-                    </li>
+                        <li>
+                          <Link
+                            className="text-gray-100 text-base hover:text-white"
+                            to={`${url}/addreview`}
+                          >
+                            Add Review
+                          </Link>
+                        </li>
+                      </div>
+                    )}
+
+                    {admin && (
+                      <div className="space-y-4">
+                        <li>
+                          <Link
+                            className="text-gray-100 text-base hover:text-white"
+                            to={`${url}/manageorders`}
+                          >
+                            Manage Orders
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            className="text-gray-100 text-base hover:text-white"
+                            to={`${url}/makeAdmin`}
+                          >
+                            Make an Admin
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            className="text-gray-100 text-base hover:text-white"
+                            to={`${url}/addservices`}
+                          >
+                            Add Services
+                          </Link>
+                        </li>
+
+                        <li>
+                          <Link
+                            className="text-gray-100 text-base hover:text-white"
+                            to={`${url}/manageservices`}
+                          >
+                            Manage Services
+                          </Link>
+                        </li>
+                      </div>
+                    )}
                     <button onClick={logOut} className="ml-5 text-white">
                       Logout
                     </button>
@@ -236,15 +257,18 @@ const Dashboard = () => {
                     <Route path={`${path}/addreview`}>
                       <AddReview />
                     </Route>
-                    <Route path={`${path}/addservices`}>
+                    <AdminRoute path={`${path}/addservices`}>
                       <AddServices />
-                    </Route>
-                    <Route path={`${path}/manageorders`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeAdmin`}>
+                      <MakeAdmin />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageorders`}>
                       <ManageOrder />
-                    </Route>
-                    <Route path={`${path}/manageservices`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageservices`}>
                       <ManageServices />
-                    </Route>
+                    </AdminRoute>
                   </Switch>
 
                   {/* /End replace */}

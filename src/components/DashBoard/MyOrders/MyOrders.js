@@ -12,12 +12,34 @@ const MyOrders = () => {
       .then((data) => setOrders(data));
   }, []);
 
+  // DELETE
+  const handleDeleteUser = (id) => {
+    const proceed = window.confirm("Are You sure You want to DELETE?");
+    if (proceed) {
+      fetch(`http://localhost:5000/orders/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("deleted successfully");
+            const remainingOrders = orders.filter((order) => order._id !== id);
+            setOrders(remainingOrders);
+          }
+        });
+    }
+  };
+
   return (
-    <div className="m-1 ">
+    <div className="m-1 min-h-screen">
       <h3 className="pt-6 px-4 text-xl font-bold">My Orders</h3>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
         {orders.map((order) => (
-          <MyOrder order={order} key={order._id}></MyOrder>
+          <MyOrder
+            order={order}
+            handleDeleteUser={handleDeleteUser}
+            key={order._id}
+          ></MyOrder>
         ))}
       </div>
     </div>

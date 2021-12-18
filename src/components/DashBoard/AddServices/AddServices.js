@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
 
 const AddServices = () => {
+  const { loading } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const [success, setSuccess] = useState(false);
   const onSubmit = (data) => {
@@ -25,6 +27,7 @@ const AddServices = () => {
   return (
     <div className="h-screen my-auto">
       <h2 className="text-xl font-bold ml-8 mt-6">Add Your Services</h2>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className=" flex justify-center  lg:justify-start px-0 lg:px-8 md:px-4"

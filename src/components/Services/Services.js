@@ -8,6 +8,7 @@ import Singleservice from "./SingleService/Singleservice";
 const Services = () => {
   const [allservices, setAllServices] = useState([]);
   const [bookingSuccess, setBookingSuccess] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
