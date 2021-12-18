@@ -5,12 +5,12 @@ import SingleHomeService from "./SingleHomeService/SingleHomeService";
 const HomeServices = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://agile-fjord-90292.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
   return (
-    <div className="my-24 mx-12">
+    <div id="services" className="my-24 mx-12">
       <h2 className="text-3xl font-bold text-center text-gray-700">
         Our Awesome <span className="text-pink-600">Services</span>
       </h2>
@@ -25,7 +25,7 @@ const HomeServices = () => {
       <div className="flex justify-center cursor-pointer">
         <Link to="/browseServices">
           <button className=" bg-pink-600 text-white rounded-md py-2 px-4">
-            All Services
+            Book Services
           </button>
         </Link>
       </div>

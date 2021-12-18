@@ -6,7 +6,7 @@ const AddReview = () => {
   const [success, setSuccess] = useState(false);
   const onSubmit = (data) => {
     // send to the server
-    fetch(`http://localhost:5000/testimonials`, {
+    fetch(`https://agile-fjord-90292.herokuapp.com/testimonials`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

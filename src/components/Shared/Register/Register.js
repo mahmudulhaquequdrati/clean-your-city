@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Register.css";
 import logo from "../Register/images/LogoMakr-1O38lS.png";
 import useAuth from "../../../hooks/useAuth";
@@ -12,7 +12,7 @@ const Register = () => {
   const [registrationData, setRegistrationData] = useState({});
 
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -28,11 +28,11 @@ const Register = () => {
       registrationData.password,
       registrationData.name,
       location,
-      history
+      navigate
     );
   };
   const handleGoogleSignIn = () => {
-    signInWithGoogle(location, history);
+    signInWithGoogle(location, navigate);
   };
   return (
     <div className=" pt-6 register-bg">

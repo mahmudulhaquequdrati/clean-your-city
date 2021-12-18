@@ -24,7 +24,7 @@ const useFirebase = () => {
 
   // sign in with google
   const googleProvider = new GoogleAuthProvider();
-  const signInWithGoogle = (location, history) => {
+  const signInWithGoogle = (location, navigate) => {
     setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -36,7 +36,7 @@ const useFirebase = () => {
 
         // redirect to the page
         const destination = location?.state?.from || "/";
-        history.push(destination);
+        navigate(destination);
         setAuthError("");
       })
       .catch((error) => {
@@ -48,7 +48,7 @@ const useFirebase = () => {
   };
 
   // register an user
-  const registerUser = (email, password, name, location, history) => {
+  const registerUser = (email, password, name, location, navigate) => {
     setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -65,7 +65,7 @@ const useFirebase = () => {
           .catch((error) => {});
 
         setAuthError("");
-        history.push("/");
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -77,12 +77,12 @@ const useFirebase = () => {
   };
 
   // login an user
-  const loginUser = (email, password, location, history) => {
+  const loginUser = (email, password, location, navigate) => {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const destination = location?.state?.from || "/";
-        history.push(destination);
+        navigate(destination);
 
         setAuthError("");
       })
@@ -107,7 +107,7 @@ const useFirebase = () => {
   // save user to database
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("http://localhost:5000/users", {
+    fetch("https://agile-fjord-90292.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -119,7 +119,7 @@ const useFirebase = () => {
   // get admin from database
   useEffect(() => {
     // setLoading(true);
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://agile-fjord-90292.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
     // .catch((error) => {
@@ -139,7 +139,7 @@ const useFirebase = () => {
       setLoading(false);
     });
     return () => unsubscribe;
-  }, []);
+  }, [auth]);
 
   //
   return {

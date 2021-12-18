@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import logo from "../Register/images/LogoMakr-1O38lS.png";
 import loader from "../Register/images/loader.svg";
@@ -10,7 +10,7 @@ const Login = () => {
   const [loginData, setLoginData] = useState({});
 
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -21,10 +21,10 @@ const Login = () => {
   };
   const loginForm = (e) => {
     e.preventDefault();
-    loginUser(loginData.email, loginData.password, location, history);
+    loginUser(loginData.email, loginData.password, location, navigate);
   };
   const handleGoogleSignIn = () => {
-    signInWithGoogle(location, history);
+    signInWithGoogle(location, navigate);
   };
   return (
     <div className=" pt-6 register-bg">

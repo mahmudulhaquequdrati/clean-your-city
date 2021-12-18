@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -14,16 +15,18 @@ const Footer = () => {
         </div>
         <div>
           <h3 className="text-xl mb-2 lg:mt-1 mt-8 font-semibold">Company</h3>
-          <p>Our Services</p>
-          <p>Contact Us</p>
-          <p>Our Blogs</p>
-          <p>Login to account</p>
+          <Link to="/browseServices">Our Services</Link>
+          <br />
+          <Link to="/contact">Contact Us</Link>
+          <br />
+          <Link to="/login">Login to account</Link>
         </div>
         <div>
           <h3 className="text-xl mb-2 lg:mt-1 mt-8 font-semibold">About Us</h3>
           <p className="text-sm">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-            laborum pariatur ut voluptatem!
+            Eco Interior Maintenance is a locally owned and operated company
+            that specializes in carpet cleaning, hard surface flooring, tile &
+            grout!
           </p>
           <div>
             <i className="fab fa-github text-2xl mr-2"></i>

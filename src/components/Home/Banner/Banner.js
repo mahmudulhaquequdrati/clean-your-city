@@ -12,13 +12,19 @@ const Banner = () => {
           For Your Home Services
         </h2>
         <p className="py-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-          inventore id reiciendis vero provident accusantium porro totam aliquid
-          doloribus, praesentium ipsa esse, labore pariatur quia!
+          Over 30 Years Experience Serving the DMV Metro Area. Office |
+          Hotel|Retail | Restaurant. Eco Friendly Products. Make Your Floors
+          Look Like New With The Experts At Eco Interior. Free Floor
+          Demonstrations.!
         </p>
-        <button className="bg-pink-600 rounded-lg py-3 px-6 text-white">
-          Learn More
-        </button>
+        <div className="mt-4">
+          <a
+            href="#services"
+            className="bg-pink-600 rounded-lg py-3 px-6 text-white"
+          >
+            Learn More
+          </a>
+        </div>
       </div>
       <div className="flex justify-center items-center">
         {/* https://image.freepik.com/free-photo/smiling-slavic-cleaner-man-with-rubber-gloves-holding-bucket-sponge_141793-125574.jpg 

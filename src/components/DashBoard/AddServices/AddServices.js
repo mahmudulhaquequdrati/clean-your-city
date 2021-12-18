@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import useAuth from "../../../hooks/useAuth";
+// import useAuth from "../../../hooks/useAuth";
 
 const AddServices = () => {
-  const { loading } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const [success, setSuccess] = useState(false);
   const onSubmit = (data) => {
     console.log(data);
     // send to the server
-    fetch(`http://localhost:5000/services`, {
+    fetch(`https://agile-fjord-90292.herokuapp.com/services`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

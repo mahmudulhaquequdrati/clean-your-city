@@ -4,6 +4,7 @@ import "./contact.css";
 const Contact = () => {
   const formSubmit = (e) => {
     e.preventDefault();
+    alert("message successfully sent!");
   };
   return (
     <div
@@ -18,12 +19,14 @@ const Contact = () => {
         <div className="w-10/12 lg:w-6/12 md:8/12">
           <div className="mt-8  flex">
             <input
+              required
               className="border w-3/6  m-1 text-sm py-2 px-4 focus:ring-sky-500 focus:border-sky-500 focus:outline-none"
               type="text"
               name="firstName"
               placeholder="FirstName"
             />
             <input
+              required
               className="border w-3/6 m-1 text-sm py-2 px-4 focus:ring-sky-500 focus:border-sky-500 focus:outline-none"
               type="text"
               name="lastName"
@@ -32,12 +35,14 @@ const Contact = () => {
           </div>
           <div className="flex ">
             <input
+              required
               type="email"
               name="email"
               placeholder="Email"
               className=" w-3/6  border m-1 text-sm py-2 px-4 focus:ring-sky-500 focus:border-sky-500 focus:outline-none "
             />
             <input
+              required
               type="text"
               name="Number"
               placeholder="Phone"
@@ -46,6 +51,7 @@ const Contact = () => {
           </div>
           <textarea
             name="message"
+            required
             rows="10"
             placeholder="Message"
             className="border w-full  m-1 text-sm py-2 px-4 focus:ring-sky-500 focus:border-sky-500 focus:outline-none flex justify-start"

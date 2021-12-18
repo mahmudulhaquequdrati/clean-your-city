@@ -18,7 +18,7 @@ const ServicesModal = ({ open, setOpen, setBookingSuccess, allService }) => {
     };
 
     // send to the server
-    fetch(`http://localhost:5000/servicesOrder`, {
+    fetch(`https://agile-fjord-90292.herokuapp.com/servicesOrder`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

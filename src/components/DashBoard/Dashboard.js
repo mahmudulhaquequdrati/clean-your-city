@@ -6,18 +6,11 @@ import { Link } from "react-router-dom";
 import logo from "../Shared/Register/images/LogoMakr-1O38lS.png";
 import menuicon from "../Shared/Register/images/menu (2).png";
 import useAuth from "../../hooks/useAuth";
-import DashBoardHome from "./DashBoardHome/DashBoardHome";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-import MyOrders from "./MyOrders/MyOrders";
-import AddReview from "./AddReview/AddReview";
-import AddServices from "./AddServices/AddServices";
-import ManageOrder from "./ManageOrder/ManageOrder";
-import ManageServices from "./ManageServices/ManageServices";
-import MakeAdmin from "./MakeAdmin/MakeAdmin";
-import AdminRoute from "./MakeAdmin/AdminRoute/AdminRoute";
+
+import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  let { path, url } = useRouteMatch();
+  // let { path, url } = useRouteMatch();
   const { logOut, admin } = useAuth();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   return (
@@ -75,7 +68,7 @@ const Dashboard = () => {
                         {" "}
                         <Link
                           className="text-gray-700 text-base hover:text-gray-900"
-                          to={`${url}`}
+                          to="/dashboard"
                         >
                           Dashboard
                         </Link>
@@ -84,7 +77,7 @@ const Dashboard = () => {
                       <li>
                         <Link
                           className="text-gray-700 text-base hover:text-gray-900"
-                          to={`${url}/myorders`}
+                          to={`/dashboard/myorders`}
                         >
                           My orders
                         </Link>
@@ -92,7 +85,7 @@ const Dashboard = () => {
                       <li>
                         <Link
                           className="text-gray-700 text-base hover:text-gray-900"
-                          to={`${url}/addreview`}
+                          to={`/dashboard/addreview`}
                         >
                           Add Review
                         </Link>
@@ -101,7 +94,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-700 text-base hover:text-gray-900"
-                            to={`${url}/addservices`}
+                            to={`/dashboard/addservices`}
                           >
                             Add Services
                           </Link>
@@ -110,7 +103,7 @@ const Dashboard = () => {
                       <li>
                         <Link
                           className="text-gray-700 text-base hover:text-gray-900"
-                          to={`${url}/manageorders`}
+                          to={`/dashboard/manageorders`}
                         >
                           Manage Orders
                         </Link>
@@ -118,7 +111,7 @@ const Dashboard = () => {
                       <li>
                         <Link
                           className="text-gray-700 text-base hover:text-gray-900"
-                          to={`${url}/manageservices`}
+                          to={`/dashboard/manageservices`}
                         >
                           Manage Services
                         </Link>
@@ -174,7 +167,7 @@ const Dashboard = () => {
                       {" "}
                       <Link
                         className="text-gray-100 text-base hover:text-white"
-                        to={`${url}`}
+                        to="/dashboard"
                       >
                         Dashboard
                       </Link>
@@ -184,7 +177,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-100 text-base hover:text-white"
-                            to={`${url}/myorders`}
+                            to={`/dashboard/myorders`}
                           >
                             My orders
                           </Link>
@@ -193,7 +186,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-100 text-base hover:text-white"
-                            to={`${url}/addreview`}
+                            to={`/dashboard/addreview`}
                           >
                             Add Review
                           </Link>
@@ -206,7 +199,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-100 text-base hover:text-white"
-                            to={`${url}/manageorders`}
+                            to={`/dashboard/manageorders`}
                           >
                             Manage Orders
                           </Link>
@@ -214,7 +207,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-100 text-base hover:text-white"
-                            to={`${url}/makeAdmin`}
+                            to={`/dashboard/makeAdmin`}
                           >
                             Make an Admin
                           </Link>
@@ -222,7 +215,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-100 text-base hover:text-white"
-                            to={`${url}/addservices`}
+                            to={`/dashboard/addservices`}
                           >
                             Add Services
                           </Link>
@@ -231,7 +224,7 @@ const Dashboard = () => {
                         <li>
                           <Link
                             className="text-gray-100 text-base hover:text-white"
-                            to={`${url}/manageservices`}
+                            to={`/dashboard/manageservices`}
                           >
                             Manage Services
                           </Link>
@@ -247,29 +240,7 @@ const Dashboard = () => {
                 {/* Product grid */}
                 <div className="lg:col-span-3  lg:rounded-none rounded-xl  bg-pink-300">
                   {/* Replace with your content */}
-                  <Switch>
-                    <Route exact path={path}>
-                      <DashBoardHome />
-                    </Route>
-                    <Route path={`${path}/myorders`}>
-                      <MyOrders />
-                    </Route>
-                    <Route path={`${path}/addreview`}>
-                      <AddReview />
-                    </Route>
-                    <AdminRoute path={`${path}/addservices`}>
-                      <AddServices />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/makeAdmin`}>
-                      <MakeAdmin />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/manageorders`}>
-                      <ManageOrder />
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/manageservices`}>
-                      <ManageServices />
-                    </AdminRoute>
-                  </Switch>
+                  <Outlet></Outlet>
 
                   {/* /End replace */}
                 </div>

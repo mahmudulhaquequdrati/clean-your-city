@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const AboutUs = () => {
   return (
     <div className="my-12">
@@ -17,15 +18,18 @@ const AboutUs = () => {
             <span className="text-pink-600">proffesionally</span>
           </h4>
           <p className="pb-8 pt-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam non
-            ipsum vero. Qui quia inventore enim pariatur labore voluptates
-            fugit, necessitatibus repellat consectetur deserunt odio odit, eos
-            mollitia ipsa accusantium!
+            Eco Interior Maintenance is a locally owned and operated company
+            that specializes in carpet cleaning, hard surface flooring, tile &
+            grout, wood floors, upholstery and the detail cleaning of high touch
+            and surfaces in any public area.!
           </p>
           <div className="">
-            <button className="bg-pink-500 rounded-lg text-gray-100 px-6 py-3">
+            <Link
+              to="/browseServices"
+              className="bg-pink-500 rounded-lg text-gray-100 px-6 py-3"
+            >
               Book Services
-            </button>
+            </Link>
             {/* <div>
               <h2 className="text-4xl font-bold py-4 text-pink-600">500+</h2>
               <p className="font-semibold text-pink-500">Happy Customers</p>
