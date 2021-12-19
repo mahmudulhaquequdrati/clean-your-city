@@ -30,10 +30,13 @@ const Banner = () => {
         {/* https://image.freepik.com/free-photo/smiling-slavic-cleaner-man-with-rubber-gloves-holding-bucket-sponge_141793-125574.jpg 
 
         import also banner
+https://image.freepik.com/free-photo/smiling-slavic-cleaner-man-with-rubber-gloves-holding-bucket-sponge_141793-125574.jpg
+
+        
         */}
         <img
           className="rounded-lg -mb-8 mt-12 lg:mt-0 "
-          src="https://image.freepik.com/free-photo/smiling-slavic-cleaner-man-with-rubber-gloves-holding-bucket-sponge_141793-125574.jpg"
+          src="https://image.freepik.com/free-photo/cheerful-dark-skinned-husband-wears-panama-head-poses-from-inside-washing-maching-feels-positive-does-laundry-has-busy-day-overloaded-with-multicolored-dirty-clothes_273609-51763.jpg"
           alt=""
         />
       </div>

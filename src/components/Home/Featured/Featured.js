@@ -5,6 +5,10 @@ import establishedLogo from "../../Shared/Register/images/gift-box.png";
 import countryReached from "../../Shared/Register/images/delivery-truck.png";
 
 const Featured = () => {
+  /* 
+  
+  
+  https://image.freepik.com/free-photo/young-woman-sitting-cleaning-products_273609-41426.jpg*/
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 lg:px-16 md:px-16 px-6 py-4 lg:py-8">
       <div className="my-auto mx-2">
@@ -43,8 +47,8 @@ const Featured = () => {
       </div>
       <div className="flex items-center h-full">
         <img
-          className="rounded mt-16 lg:mt-0 lg:h-5/6 h-auto mx-auto"
-          src="https://image.freepik.com/free-photo/young-woman-sitting-cleaning-products_273609-41426.jpg"
+          className="rounded mt-16 lg:mt-0  h-auto mx-auto"
+          src="https://image.freepik.com/free-psd/happy-man-showing-smartphone-digital-mock-up_23-2148712478.jpg"
           alt=""
         />
       </div>

@@ -22,16 +22,16 @@ const Services = () => {
       </div>
 
       <div className="pt-2 px-12">
-        <h2 className="text-pink-600 text-3xl text-center font-bold">
-          Service We Provide
-        </h2>
         <div className="">
           <img
-            className="mx-auto w-8/12 -mt-12 -mb-24 z-0"
-            src="https://i.ibb.co/TBh4ffT/services.png"
+            className="mx-auto  w-full z-0"
+            src="https://image.freepik.com/free-photo/happy-young-asia-businessmen-businesswomen-meeting-brainstorming-ideas-about-new-paperwork-project-colleagues-working-together-planning-success-strategy-enjoy-teamwork-small-modern-office_7861-2535.jpg"
             alt=""
           />
         </div>
+        <h2 className="text-pink-600 text-3xl text-center font-bold m-4">
+          Service We Provide
+        </h2>
         {bookingSuccess && (
           <div className="flex mt-4 justify-center">
             <p className=" px-4 py-3 rounded text-green-600">

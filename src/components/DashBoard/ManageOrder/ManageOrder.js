@@ -49,11 +49,11 @@ const ManageOrder = () => {
   }, []);
 
   return (
-    <div className="m-2 ">
+    <div className="m-2 md:m-0">
       <h3 className="pt-6 px-8 text-xl text-center lg:text-left font-bold">
         Manage All Orders
       </h3>
-      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 mx-0 lg:mx-8">
+      <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 mx-0 lg:mr-2">
         {allorders.map((order) => (
           <ManageAllOrderes
             updateSuccess={updateSuccess}
