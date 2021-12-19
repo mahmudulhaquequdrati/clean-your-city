@@ -7,7 +7,7 @@ const AboutUs = () => {
   return (
     <div className="my-12">
       <div className="py-24 grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 bg-pink-50">
-        <div className="px-8 lg:px-16">
+        <div className="px-8 flex items-center lg:px-16">
           <img
             className="rounded-lg"
             src="https://image.freepik.com/free-psd/cleaner-service-quality-products-bucket_23-2148568780.jpg "
