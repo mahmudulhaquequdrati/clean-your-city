@@ -39,17 +39,17 @@ const ManageAllOrderes = ({
         </div>
 
         <div className="flex flex-col justify-end mx-4 my-2">
-          {updateSuccess ? (
-            <p className="bg-pink-100 text-green-600 rounded-md my-1 py-2 text-sm px-4">
-              shipped
-            </p>
-          ) : (
+          {!updateSuccess ? (
             <button
               onClick={() => handleUpdate(_id)}
               className="bg-pink-100 text-green-600 w-full md:w-2/4 lg:w-2/4 ml-auto rounded-md my-1 py-2 text-sm px-4"
             >
               update
             </button>
+          ) : (
+            <p className="bg-pink-100 text-center text-green-600 w-full md:w-2/4 lg:w-2/4 ml-auto rounded-md my-1 py-2 text-sm px-4">
+              shipped
+            </p>
           )}
           <button
             onClick={() => handleDeleteUser(_id)}

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 const ServicesModal = ({ open, setOpen, setBookingSuccess, allService }) => {
   const { name, price, img, description } = allService;
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     // collect data
@@ -21,6 +21,7 @@ const ServicesModal = ({ open, setOpen, setBookingSuccess, allService }) => {
     fetch(`https://agile-fjord-90292.herokuapp.com/servicesOrder`, {
       method: "POST",
       headers: {
+        authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(data),

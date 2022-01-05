@@ -9,6 +9,7 @@ import {
   onAuthStateChanged,
   updateProfile,
   signOut,
+  getIdToken,
 } from "firebase/auth";
 
 // initialize fireabse
@@ -19,6 +20,7 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState("");
   const [success, setSuccess] = useState("");
   const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState("");
 
   const auth = getAuth();
 
@@ -133,6 +135,9 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        getIdToken(user).then((idToken) => {
+          setToken(idToken);
+        });
       } else {
         setUser({});
       }
@@ -152,6 +157,7 @@ const useFirebase = () => {
     loading,
     authError,
     success,
+    token,
   };
 };
 

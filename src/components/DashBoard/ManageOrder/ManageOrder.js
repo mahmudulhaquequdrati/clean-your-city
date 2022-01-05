@@ -36,8 +36,8 @@ const ManageOrder = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          setUpdateSuccess(true);
           alert("order updated successfully");
+          setUpdateSuccess(true);
         }
       });
   };

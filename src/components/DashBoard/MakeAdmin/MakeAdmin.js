@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const form = document.getElementById("formSubmit");
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const { token } = useAuth();
 
   const handleOnBlur = (e) => {
     setEmail(e.target.value);
-    console.log(email);
+    // console.log(email);
   };
 
   const handleSubmit = (e) => {
@@ -17,6 +19,7 @@ const MakeAdmin = () => {
     fetch("https://agile-fjord-90292.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
+        authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(user),
@@ -24,12 +27,12 @@ const MakeAdmin = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          setSuccess("SuccessFully updated admin role to the user!");
           form.reset();
+          setSuccess("SuccessFully updated admin role to the user!");
           setError("");
         } else {
-          setError("email not registered");
           form.reset();
+          setError("email not registered");
         }
       });
   };
